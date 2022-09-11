@@ -1,9 +1,9 @@
 const multidimensionalArr: Array<any> = [[[[3, '2', 1]], [[[[[[[6, undefined, 4]]]]]]]], [], 4, [[8, 4]]];
 const simpleArr: Array<any> = [1, true, 3, null, 5];
 
-let getFlatFunc = (array: any[], redundantArg?: any): any[] => {
+function getFlatFunc (array: any[]): any[] | never {
 
-    if (redundantArg) {
+    if (arguments.length > 1) {
         throw new Error('Function accepts only 1 argument, too much arguments provided');
     }
 
@@ -15,5 +15,6 @@ let getFlatFunc = (array: any[], redundantArg?: any): any[] => {
 }
 
 console.log(getFlatFunc(multidimensionalArr)); //array output
-console.log(getFlatFunc(simpleArr, [5, 3, 4])); /*Uncaught Error: Function accepts only 1
-                                                              argument, too much arguments provided*/
+console.log(getFlatFunc(simpleArr, [5, 3, 4])); /*Expected 1 arguments, but got 2. in ts or in js -
+                                                          Uncaught Error: Function accepts only 1
+                                                          argument, too much arguments provided*/
